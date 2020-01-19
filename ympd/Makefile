@@ -48,7 +48,8 @@ define Build/Prepare
 endef
 
 define Package/ympd/install
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/ympd $(1)/
+	mkdir -p $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/ympd $(1)/usr/bin/
 endef
 
 $(eval $(call BuildPackage,ympd))
