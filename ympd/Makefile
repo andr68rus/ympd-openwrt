@@ -9,8 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ympd
 PKG_VERSION:=2018-03-29
-PKG_RELEASE:=1
-PKG_LICENSE:=GPL-2.0-only
+PKG_RELEASE:=$(PKG_SOURCE_VERSION)
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/notandy/ympd.git
@@ -50,7 +49,12 @@ endef
 
 define Package/ympd/install
 	mkdir -p $(1)/usr/bin/
+	mkdir -p $(1)/etc/config/
+	mkdir -p $(1)/etc/init.d/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/ympd $(1)/usr/bin/
+	$(INSTALL_BIN) ./etc/init.d/ympd $(1)/etc/init.d/
+	$(INSTALL_DATA) ./etc/config/ympd $(1)/etc/config/
+
 endef
 
 $(eval $(call BuildPackage,ympd))

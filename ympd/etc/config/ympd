@@ -1,0 +1,7 @@
+config ympd 'conf'
+	option host 'localhost'
+	option port '6600'
+	option webport '8080'
+	option user 'root'
+	option mpdpass ''
+	option dirbletoken ''
